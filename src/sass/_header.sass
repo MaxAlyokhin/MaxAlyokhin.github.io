@@ -1,0 +1,41 @@
+.header
+  .wrapper
+    @include space-between
+  border-bottom: 1px solid $grey
+  height: 70px
+  font-family: 'segoe-bold'
+  &__logo
+    padding-right: 30px
+  &__left
+    height: inherit
+    display: flex
+    align-items: center
+  &__menu
+    display: flex
+    text-transform: uppercase
+    color: $dark-grey
+  &__menu-item
+    padding-right: 30px
+    img
+      padding-right: 15px
+  &__right
+    display: flex
+    .header__right-item
+      @include center
+      padding: 0 25px
+      &:last-child
+        padding-right: 0
+      .header__logout
+        color: $blue
+      .header__settings
+        margin-right: 20px
+      &:nth-child(2)
+        border-left: 1px solid $grey
+        border-right: 1px solid $grey
+      .header__right-container
+        width: max-content
+        .header__right-name
+          font-size: 18px
+        .header__right-id
+          color: $dark-grey
+          padding-top: 5px

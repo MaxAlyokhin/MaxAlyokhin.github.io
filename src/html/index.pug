@@ -1,0 +1,97 @@
+doctype html
+html(lang="ru-RU")
+  head
+    title Заголовок
+
+    include ./templates/head
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
+    <!-- main:js -->
+    <!-- endinject -->
+
+  body
+    include ./templates/modules/header
+    include ./templates/components/menu
+
+    //- По идее здесь должен быть block content, а сама страница где-то в папке views или pages
+    //- Но в рамках теста оставлю код страницы здесь
+    .invest.wrapper
+      .invest-header
+        .invest-header__title Инвестировать
+        .invest-header__menu
+          .invest-header__menu-item
+            input(type="checkbox" name="checkbox" id="checkbox-1" class="custom-checkbox" checked)
+            label(for="checkbox-1") Активные (15)
+          .invest-header__menu-item
+            input(type="checkbox" name="checkbox" id="checkbox-2" class="custom-checkbox")
+            label(for="checkbox-2") Зарезервированные (2)
+          .invest-header__menu-item
+            input(type="checkbox" name="checkbox" id="checkbox-3" class="custom-checkbox")
+            label(for="checkbox-3") Собранные (10)
+          .invest-header__menu-item
+            input(type="checkbox" name="checkbox" id="checkbox-4" class="custom-checkbox")
+            label(for="checkbox-4") Все (27)
+          .invest-header__menu-item
+            input(type="checkbox" name="checkbox" id="checkbox-5" class="custom-checkbox")
+            label(for="checkbox-5") Сначала новые
+          .invest-header__menu-item
+            include ./templates/components/search
+          .invest-header__menu-item
+            .invest-header__files
+              .invest-header__file
+                .invest-header__file-img
+                  include ./templates/components/pdf
+                .invest-header__file-text
+                  a(href="#") Скачать отчёт в PDF
+              .invest-header__file
+                .invest-header__file-img
+                  include ./templates/components/email
+                .invest-header__file-text
+                  a(href="#") Выслать отчёт на почту
+              .invest-header__file
+                .invest-header__file-img
+                  include ./templates/components/excel
+                .invest-header__file-text
+                  a(href="#") Скачать отчёт в Excel
+      .invest-table
+        - var n = 0;
+        table
+          thead
+            tr
+              td Проект
+              td Страна
+              td.arrow Сумма проекта
+              td Ставка
+              td YTM
+              td.arrow Рейтинг
+              td.arrow Срок
+              td Страховка
+              td Собрано
+              td Сбор до
+              td Действие
+          tbody
+            while n < 10
+              - n++
+              tr
+                include ./templates/modules/invest-row
+      .invest-footer
+        .invest-footer__items
+          .invest-footer__item
+            .invest-footer__item-text Показывать:
+            .invest-footer__item-count
+              a(href="#") 10
+            .invest-footer__item-arrow
+              img(src="/img/arrow.png", alt="")
+          .invest-footer__item
+            .invest-footer__item-text 0 из 10
+          .invest-footer__item
+            .invest-footer__item-forward
+              a(href="#")
+                img(src="/img/backward.png", alt="")
+            .invest-footer__item-backward
+              a(href="#")
+                img(src="/img/backward.png", alt="")
+
+    include ./templates/modules/footer
